@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { evaluate, sqrt } from 'mathjs';
 import './Buttons.css';
 
@@ -32,14 +32,17 @@ class Buttons extends Component {
 
     decimalClicked = (event) => {
         if (!this.state.firstNumber.includes('.') && !this.state.operatorClicked) {
-            console.log('hi');
-            this.setState({ firstNumber: this.state.firstNumber.concat(event.target.value) })
+            this.setState({ 
+                firstNumber: this.state.firstNumber.concat(event.target.value) 
+            })
         } else if (this.state.operatorClicked) {
             !this.state.secondNumber.includes('.') 
-                ?
-                    this.setState({ secondNumber: this.state.secondNumber.concat(event.target.value) }) 
+                ? 
+                    this.setState({ 
+                        secondNumber: this.state.secondNumber.concat(event.target.value) 
+                    }) 
                 : 
-                    console.log('Decimal be gone!!!!!!!!');
+                    console.log('You can\'t have 2 decimals. I\'m sorry, you just can\'t!');
         }
     }
 
@@ -53,14 +56,15 @@ class Buttons extends Component {
     }
 
     equalsClicked = () => {
-        evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber)) === Infinity ?
-            this.setState({
-                answer: undefined
-            }) 
-        :
-            this.setState({
-                answer: evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber))
-            })
+        evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber)) === Infinity 
+            ?
+                this.setState({
+                    answer: undefined
+                }) 
+            :
+                this.setState({
+                    answer: evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber))
+                })
         this.setState({
             // expression: '',
             firstNumber: '',
