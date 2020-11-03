@@ -44,10 +44,12 @@ class Buttons extends Component {
     }
 
     operatorClicked = (event) => {
-        this.setState({
-            operator: event.target.value,
-            operatorClicked: true,
-        })
+        if (this.state.firstNumber !== '') {
+            this.setState({
+                operator: event.target.value,
+                operatorClicked: true,
+            })
+        }
     }
 
     equalsClicked = () => {

@@ -1,4 +1,5 @@
 npm install mathjs
+npm start
 
 
 
