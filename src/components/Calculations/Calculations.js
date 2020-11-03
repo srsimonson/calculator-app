@@ -1,23 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import './Calculations.css';
 
 class Calculations extends Component {
-    state = {
-        calculations: 'calculations hi'
+
+    componentDidMount(){
+        console.log('props', this.props);
     }
 
-    render() {
-        console.log('calcuations state', this.state);
-        
-        return (
-            <>
-            <div>
-                <h1>Calculation History</h1>
-            </div>
-            <div>
-                {/* Map through calculations here. */}
-            </div>
-            </>
-        )
+    render(){
+        return(
+        <>  
+            <h1>Calculation History</h1>
+            <ul>
+                {this.props.calculationHistory.map((item) => {
+                    return <li key={item.id}> {item.expression} = {item.answer}</li>
+                })}
+            </ul>
+        </>
+        );
     }
 }
 

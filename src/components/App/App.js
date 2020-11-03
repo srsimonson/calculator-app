@@ -3,8 +3,33 @@ import React, {Component} from 'react';
 import './App.css';
 import Calculator from '../Calculator/Calculator';
 import Calculations from '../Calculations/Calculations';
+import axios from 'axios';
 
 class App extends Component {
+
+  state = {
+    calculationHistory: [],
+  }
+
+  componentDidMount() {
+    this.getCalcHx()
+  }
+
+  getCalcHx = () => {
+    console.log('dododo');
+    axios({
+      method: 'GET',
+      url: '/calculations'
+    }).then((response) => {
+      console.log('response', response.data);
+      this.setState({
+        calculationHistory: response.data
+      })
+    }).catch((error) => {
+      console.log('error with GET request', error);
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,12 +48,10 @@ class App extends Component {
           </a>
         </header> */}
         <div className="calculator-body">
-          {/* <h1>Calculator Body</h1> */}
             <Calculator/>
         </div>
         <div className="calculation-history">
-          {/* <h1>calculation History</h1> */}
-            <Calculations/>
+            <Calculations calculationHistory={this.state.calculationHistory}/>
         </div>
       </div>
     );

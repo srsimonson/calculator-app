@@ -1,6 +1,11 @@
 npm install mathjs
-npm start
+npm install axios
+npm install body-parser
+npm install pg
 
+npm start
+npm run client
+npm run server
 
 
 
