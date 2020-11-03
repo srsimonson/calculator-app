@@ -1,5 +1,17 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+
+.calculator-body {
+  border: 1px solid red;
+  width: 90%;
+  margin: 10px;
+}
+
+.calculation-history {
+  border: 1px solid red;
+  width: 90%;
+  margin: 10px;
 }
 
 .App-logo {

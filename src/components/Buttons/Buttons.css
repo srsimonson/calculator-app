@@ -1,0 +1,39 @@
+.button-grid {
+    border: 1px solid red;
+    width: 275px;
+}
+
+button {
+    width: 25%;
+    border: none;
+    height: 50px;
+    outline: none;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+.operator {
+    background-color: rgb(211, 253, 253);
+}
+
+.non-ops {
+    background-color: rgb(161, 194, 194);
+}
+
+.zero {
+    width: 50%;
+}
+
+.output {
+    border: 1px solid red;
+    width: 255px;
+    text-align: right;
+    padding-right: 20px;
+}
