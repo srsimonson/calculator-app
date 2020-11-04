@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM "calculator_data";`;
+    const sqlText = `SELECT * FROM "calculator_data" ORDER BY id DESC LIMIT 10;`;
     pool.query(sqlText)
         .then((result) => {
             console.log(`Got stuff back from the database`, result);
@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
     let firstNumber = req.body.firstNumber;
     let secondNumber = req.body.secondNumber;
     let answer = req.body.answer;
-    const sqlText = `INSERT INTO "calculator_data" (calculations, results) VALUES ('${firstNumber}${operator}${secondNumber}', '${answer}');`;
-
+    
+    const sqlText = `INSERT INTO "calculator_data" (expression, answer) VALUES ('${firstNumber}${operator}${secondNumber}', '${answer}');`;
     pool.query(sqlText)
         .then((result) => {
             res.sendStatus(201);

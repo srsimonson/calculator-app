@@ -57,18 +57,21 @@ class Calculator extends Component {
 
     equalsClicked = () => {
         let answer = evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber));
-        this.setState({ 
-            answer: answer, 
-        }, 
-        () => { 
+        this.setState({ answer: answer, }, () => { 
             this.props.submitCalc(this.state);
-        })
+        }) 
+        // this.setState({
+        //     expression: '',
+        //     firstNumber: '',
+        //     secondNumber: '',
+        //     operator: '',
+        //     showExpression: false,
+        //     operatorClicked: false,
+        // }) 
+        // () => { console.log('this.setState 1:', this.state); })
+        // console.log('this.state 2: ', this.state);
 
     };
-        // console.log('this.state', answer);
-        // this.setState({
-        //     answer: answer,
-        // })
 
         
         // theAnswer === Infinity 
