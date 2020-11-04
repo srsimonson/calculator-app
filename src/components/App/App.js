@@ -16,17 +16,30 @@ class App extends Component {
   }
 
   getCalcHx = () => {
-    console.log('dododo');
     axios({
       method: 'GET',
       url: '/calculations'
     }).then((response) => {
-      console.log('response', response.data);
+      console.log('response.data! ', response.data);
       this.setState({
         calculationHistory: response.data
       })
     }).catch((error) => {
       console.log('error with GET request', error);
+    })
+  }
+
+  submitCalc = (newCalc) => {
+    // console.log('in submitCalc');
+    axios({
+      method: 'POST',
+      url: '/calculations',
+      data: newCalc
+    }).then((response) => {
+      console.log('response.data: ', response.data);
+      this.getCalcHx();
+    }).catch ((err) => {
+      alert('ERROR with app.js POST: ', err)
     })
   }
 
@@ -48,7 +61,7 @@ class App extends Component {
           </a>
         </header> */}
         <div className="calculator-body">
-            <Calculator/>
+            <Calculator submitCalc={this.submitCalc}/>
         </div>
         <div className="calculation-history">
             <Calculations calculationHistory={this.state.calculationHistory}/>

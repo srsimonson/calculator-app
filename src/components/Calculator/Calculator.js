@@ -56,25 +56,44 @@ class Calculator extends Component {
     }
 
     equalsClicked = () => {
-        evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber)) === Infinity 
-            ?
-                this.setState({
-                    answer: undefined
-                }) 
-            :
-                this.setState({
-                    answer: evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber))
-                })
-        this.setState({
-            // expression: '',
-            firstNumber: '',
-            secondNumber: '',
-            operator: '',
-            showExpression: false,
-            operatorClicked: false,
+        let answer = evaluate(this.state.firstNumber.concat(this.state.operator, this.state.secondNumber));
+        this.setState({ 
+            answer: answer, 
+        }, 
+        () => { 
+            this.props.submitCalc(this.state);
         })
+
+    };
+        // console.log('this.state', answer);
+        // this.setState({
+        //     answer: answer,
+        // })
+
+        
+        // theAnswer === Infinity 
+        //     ?
+        //         this.setState({
+        //             answer: undefined
+        //         }) 
+        //     :
+        //         this.setState({
+        //             answer: theAnswer
+        //         })
+        // this.props.submitCalc(this.state);
+        // this.setState({expression: '',firstNumber: '',secondNumber: '',operator: '',showExpression: false,operatorClicked: false,}, () => { console.log('this.setState 1:', this.state); })
+        // console.log('this.state 2: ', this.state);
+        
+        // this.props.submitCalc(this.state);
         // universal refresh goes here
-    }
+    // }
+
+    // this.setState({expression: '',firstNumber: '',secondNumber: '',operator: '',showExpression: false,operatorClicked: false,}, () => { console.log('this.setState 1:', this.state); })
+    //     console.log('this.state 2: ', this.state);
+        
+    //     this.props.submitCalc(this.state);
+        // universal refresh goes here
+    // }
 
     percentClicked = () => {
         this.setState({
@@ -84,6 +103,7 @@ class Calculator extends Component {
             firstNumber: '',
             operatorClicked: false,
         })
+        // this.props.submitCalc();
     }
 
     sqrtClicked = () => {
@@ -94,6 +114,7 @@ class Calculator extends Component {
             firstNumber: '',
             operatorClicked: false,
         })
+        // this.props.submitCalc();
     }
 
     clearClicked = () => {
@@ -107,7 +128,7 @@ class Calculator extends Component {
     }
 
     render() {
-        console.log('state: ', this.state);
+        // console.log('this.state', this.state && this.state);
         
         return (
             <>

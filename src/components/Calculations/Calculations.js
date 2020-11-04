@@ -4,7 +4,7 @@ import './Calculations.css';
 class Calculations extends Component {
 
     componentDidMount(){
-        console.log('props', this.props);
+        console.log('this.props.calculationHistory', this.props.calculationHistory);
     }
 
     render(){
