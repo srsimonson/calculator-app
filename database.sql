@@ -3,3 +3,4 @@ CREATE TABLE "calculator_data" (
 	"expression" VARCHAR(100) NOT NULL,
 	"answer" VARCHAR(100) NOT NULL
 	);
+	-- test
