@@ -9,6 +9,7 @@ To run this application on your machine:
 [] Install dependencies with `npm install` to add all. Otherwise, they are individually listed below.
 - npm install mathjs
 - npm install axios
+- npm install express
 - npm install body-parser
 - npm install pg
 
