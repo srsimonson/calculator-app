@@ -78,29 +78,34 @@ class Calculator extends Component {
 
     percentClicked = () => {
         this.setState({
-            // expression: '',
+            firstNumber: this.state.firstNumber,
             answer: this.state.firstNumber / 100,
-            showExpression: false,
-            firstNumber: '',
-            operatorClicked: false,
+            operator: '%',
+        }, () => { 
+            this.props.submitCalc(this.state)
+            this.setState({
+                firstNumber: '',
+                operator: '',
+            })
         })
-        // this.props.submitCalc();
-    }
+    };
 
     sqrtClicked = () => {
         this.setState({
-            // expression: '',
+            firstNumber: this.state.firstNumber,
             answer: sqrt(this.state.firstNumber),
-            showExpression: false,
-            firstNumber: '',
-            operatorClicked: false,
+            operator: '√',
+        }, () => { 
+            this.props.submitCalc(this.state)
+            this.setState({
+                firstNumber: '',
+                operator: '',
+            })
         })
-        // this.props.submitCalc();
-    }
+    };
 
     clearClicked = () => {
         this.setState({
-            // expression: '',
             answer: '',
             firstNumber: '',
             secondNumber: '',
@@ -109,8 +114,6 @@ class Calculator extends Component {
     }
 
     render() {
-        // console.log('this.state', this.state && this.state);
-        
         return (
             <>
             <div className='output'>

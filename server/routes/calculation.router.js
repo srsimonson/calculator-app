@@ -6,19 +6,15 @@ router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM "calculator_data" ORDER BY id DESC LIMIT 10;`;
     pool.query(sqlText)
         .then((result) => {
-            console.log(`Got stuff back from the database`, result);
             res.send(result.rows);
         })
         .catch((error) => {
             console.log(`Error making database query ${sqlText}`, error);
-            res.sendStatus(500); // Good server always responds
+            res.sendStatus(500);
         })
 })
 
 router.post('/', (req, res) => {
-    console.log('req.params', req.params);
-    
-    console.log('req.body', req.body);
     let operator = req.body.operator;
     let firstNumber = req.body.firstNumber;
     let secondNumber = req.body.secondNumber;

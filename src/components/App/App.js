@@ -12,7 +12,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getCalcHx()
+    this.getCalcHx();
+    setInterval(this.getCalcHx, 1000);
   }
 
   getCalcHx = () => {
@@ -20,7 +21,6 @@ class App extends Component {
       method: 'GET',
       url: '/calculations'
     }).then((response) => {
-      console.log('response.data! ', response.data);
       this.setState({
         calculationHistory: response.data
       })
@@ -30,13 +30,11 @@ class App extends Component {
   }
 
   submitCalc = (newCalc) => {
-    // console.log('in submitCalc');
     axios({
       method: 'POST',
       url: '/calculations',
       data: newCalc
     }).then((response) => {
-      console.log('response.data: ', response.data);
       this.getCalcHx();
     }).catch ((err) => {
       alert('ERROR with app.js POST: ', err)
@@ -46,20 +44,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
         <div className="calculator-body">
             <Calculator submitCalc={this.submitCalc}/>
         </div>
